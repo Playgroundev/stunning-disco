@@ -74,7 +74,8 @@ public class FXMLController implements Initializable {
         
         ObservableList<String> paymentMethod = FXCollections.observableArrayList("Financing","Cash","Trade In");
         getPaymentDetails().setItems(paymentMethod);
-            
+        
+        txtAccountNo.setText(utilities.generateSerial());
         }catch(Exception ex){
             ex.printStackTrace();
         }

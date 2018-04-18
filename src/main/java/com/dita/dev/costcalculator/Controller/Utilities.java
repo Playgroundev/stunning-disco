@@ -19,6 +19,7 @@ import java.util.Properties;
 public class Utilities {
     Properties properties = new Properties();
     InputStream inputStream;
+    
     public  ArrayList<String> getCarModels(){
         ArrayList<String> models = new ArrayList<>();
         try{
@@ -34,5 +35,22 @@ public class Utilities {
             ex.printStackTrace();
         }
         return models;
-    }    
+    }
+
+    public String generateSerial(){
+        String ALPHA_NUMERIC = "ABCDEFGHIJKLMNOPQRST0123456789";
+         StringBuilder builder = new StringBuilder();
+        try{
+           
+            for(int i = 0;i<16;i++){
+                int character = (int)(Math.random()*ALPHA_NUMERIC.length());
+                builder.append(ALPHA_NUMERIC.charAt(character));
+            }
+            
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return builder.toString();
+    }
 }
