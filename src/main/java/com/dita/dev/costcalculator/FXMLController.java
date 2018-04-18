@@ -3,14 +3,15 @@ package com.dita.dev.costcalculator;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.awt.event.ActionListener;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -30,15 +31,15 @@ public class FXMLController implements Initializable {
     }
     
     @FXML 
-    private TextField txtName;
+    private JFXTextField txtName;
     @FXML
     private TextField txtAccountNo;
     
   /*  @FXML 
     private ProgressIndicator progress;
     */
-    @FXML private TextField txtPhone;
-    @FXML private TextField txtAddress;
+    @FXML private JFXTextField txtPhone;
+    @FXML private JFXTextField txtAddress;
     @FXML private JFXButton btnCalculate;
     @FXML private Button Exit;
     @FXML private JFXComboBox cmbModel;
@@ -51,8 +52,12 @@ public class FXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        String account_number = "123644";
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        //validator.setIcon(MaterialIcon.WARNING);
+        validator.setMessage("Input Required");
+        getName().getValidators().add(validator);
         
+        String account_number = "123644";
         txtAccountNo.setText(account_number);
         ObservableList<String> options = FXCollections.observableArrayList("1",
                 "2");
@@ -67,10 +72,14 @@ public class FXMLController implements Initializable {
         System.exit(0);
     }
     
-    public TextField getPhoneNumber(){
+    public JFXTextField getName(){
+        return txtName;
+    }
+    
+    public JFXTextField getPhoneNumber(){
         return txtPhone;
     }
-    public TextField getAddress(){
+    public JFXTextField getAddress(){
         return txtAddress;
     }
     public JFXComboBox getModel(){
@@ -93,7 +102,10 @@ public class FXMLController implements Initializable {
         generatePrice().setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Testing Implementation of Buttons");
+                if(!getName().validate()){
+                    return;
+                }
+                
             }
             
         });

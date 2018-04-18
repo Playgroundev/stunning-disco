@@ -11,5 +11,19 @@ package com.dita.dev.costcalculator.Model;
  */
 public class Package {
     
+    private String name;
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return name;
+    }
+    
+    @Override
+    public String toString(){
+        return "Package Name: " + name;
+    }
+    
     
 }
