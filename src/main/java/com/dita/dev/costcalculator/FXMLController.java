@@ -15,9 +15,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
+import com.dita.dev.costcalculator.Controller.Utilities;
 
 public class FXMLController implements Initializable {
     
+    Utilities utilities = new Utilities();
     @FXML
     private Label label;
     
@@ -62,10 +66,11 @@ public class FXMLController implements Initializable {
         validator.setMessage("Input Required");
         getAddress().getValidators().add(validator);
         
-        
-        
         generatePriceHandler();
-                
+        
+        ObservableList<String> options = FXCollections.observableArrayList(utilities.getCarModels());
+        getModel().setItems(options);
+        
     }
     
     @FXML

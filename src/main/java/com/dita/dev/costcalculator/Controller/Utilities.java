@@ -26,17 +26,13 @@ public class Utilities {
             inputStream = new FileInputStream(file);
             properties.load(inputStream);
             Enumeration enumeration = properties.propertyNames();
-            
             while(enumeration.hasMoreElements()){
                 String key = (String)enumeration.nextElement();
                 models.add(key);
-            }
-            
+            }            
         }catch(Exception ex){
             ex.printStackTrace();
         }
         return models;
-    }
-   
-    
+    }    
 }
