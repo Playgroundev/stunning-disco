@@ -104,7 +104,9 @@ public class FXMLController implements Initializable {
             public void handle(ActionEvent event) {
                 if(!getName().validate()){
                     return;
+                    
                 }
+                Alert.show("Welcome");
                 
             }
             
