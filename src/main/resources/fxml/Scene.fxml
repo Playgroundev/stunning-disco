@@ -11,17 +11,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dita.dev.costcalculator.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="478.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dita.dev.costcalculator.FXMLController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Label layoutX="31.0" layoutY="85.0" text="Name" />
-      <Label layoutX="31.0" layoutY="27.0" text="Account No" />
-      <TextField fx:id="txtAccountNo" disable="true" layoutX="146.0" layoutY="22.0" />
-      <Label layoutX="32.0" layoutY="128.0" text="Address" />
-      <Label layoutX="29.0" layoutY="170.0" prefHeight="16.0" prefWidth="75.0" text="Phone No." />
-      <Button fx:id="Exit" layoutX="639.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="26.0" prefWidth="117.0" text="Exit" />
-      <JFXButton fx:id="btnCalculate" layoutX="514.0" layoutY="407.0" prefHeight="26.0" prefWidth="117.0" style="-fx-background-color: Aqua;" text="Print" />
-      <Pane id="panel" fx:id="pnlMain" layoutX="337.0" layoutY="34.0" prefHeight="356.0" prefWidth="419.0" style="-fx-border-color: black;">
+      <Label layoutX="26.0" layoutY="27.0" text="Account No" />
+      <TextField fx:id="txtAccountNo" disable="true" layoutX="119.0" layoutY="25.0" prefHeight="25.0" prefWidth="198.0" />
+      <Button fx:id="Exit" layoutX="639.0" layoutY="423.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="26.0" prefWidth="117.0" text="Exit" />
+      <JFXButton fx:id="btnCalculate" layoutX="511.0" layoutY="424.0" prefHeight="26.0" prefWidth="117.0" style="-fx-background-color: Aqua;" text="Print" />
+      <Pane id="panel" fx:id="pnlMain" layoutX="337.0" layoutY="34.0" prefHeight="367.0" prefWidth="419.0" style="-fx-border-color: black;">
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
@@ -29,18 +26,14 @@
             <Glow level="1.0" />
          </effect>
       </Pane>
-      <Label layoutX="30.0" layoutY="217.0" text="Model" />
-      <JFXComboBox fx:id="cmbModel" layoutX="146.0" layoutY="212.0" prefHeight="23.0" prefWidth="167.0" promptText="Select" />
-      <Label layoutX="31.0" layoutY="264.0" text="Package" />
-      <JFXComboBox fx:id="cmbPackage" layoutX="146.0" layoutY="260.0" prefHeight="23.0" prefWidth="167.0" promptText="Select" />
+      <JFXComboBox fx:id="cmbModel" layoutX="23.0" layoutY="221.0" prefHeight="23.0" prefWidth="289.0" promptText="Select Model" />
+      <JFXComboBox fx:id="cmbPackage" layoutX="21.0" layoutY="269.0" prefHeight="23.0" prefWidth="289.0" promptText="Select Package" />
       <Label layoutX="337.0" layoutY="14.0" prefHeight="16.0" prefWidth="89.0" text="Information" />
-      <Label layoutX="33.0" layoutY="316.0" text="Paint" />
-      <JFXComboBox fx:id="cmbPaint" layoutX="146.0" layoutY="312.0" prefHeight="23.0" prefWidth="167.0" />
-      <Label layoutX="30.0" layoutY="367.0" text="Payment" />
-      <JFXComboBox fx:id="cmbPayment" layoutX="146.0" layoutY="362.0" prefHeight="23.0" prefWidth="167.0" />
-      <JFXButton fx:id="btnPrice" layoutX="146.0" layoutY="407.0" prefHeight="23.0" prefWidth="167.0" style="-fx-background-color: Aqua;" text="Price Vehicle" />
-      <JFXTextField fx:id="txtName" layoutX="146.0" layoutY="67.0" prefHeight="26.0" prefWidth="167.0" />
-      <JFXTextField fx:id="txtAddress" layoutX="146.0" layoutY="115.0" prefHeight="26.0" prefWidth="167.0" />
-      <JFXTextField fx:id="txtPhone" layoutX="146.0" layoutY="165.0" prefHeight="26.0" prefWidth="167.0" />
+      <JFXComboBox fx:id="cmbPaint" layoutX="23.0" layoutY="316.0" prefHeight="23.0" prefWidth="289.0" promptText="Paint Job" />
+      <JFXComboBox fx:id="cmbPayment" layoutX="22.0" layoutY="373.0" prefHeight="23.0" prefWidth="289.0" promptText="Payment Method" />
+      <JFXButton fx:id="btnPrice" layoutX="51.0" layoutY="425.0" prefHeight="23.0" prefWidth="212.0" style="-fx-background-color: Aqua;" text="Price Vehicle" />
+      <JFXTextField fx:id="txtName" layoutX="24.0" layoutY="67.0" prefHeight="26.0" prefWidth="289.0" promptText="Enter Name" />
+      <JFXTextField fx:id="txtAddress" layoutX="24.0" layoutY="115.0" prefHeight="26.0" prefWidth="289.0" promptText="Enter Address" />
+      <JFXTextField fx:id="txtPhone" layoutX="24.0" layoutY="165.0" prefHeight="26.0" prefWidth="289.0" promptText="Enter Phone Number" />
     </children>
 </AnchorPane>

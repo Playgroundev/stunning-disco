@@ -4,12 +4,9 @@ package com.dita.dev.costcalculator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.validation.RequiredFieldValidator;
-import java.awt.event.ActionListener;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -57,12 +54,16 @@ public class FXMLController implements Initializable {
         validator.setMessage("Input Required");
         getName().getValidators().add(validator);
         
-        String account_number = "123644";
-        txtAccountNo.setText(account_number);
-        ObservableList<String> options = FXCollections.observableArrayList("1",
-                "2");
-        cmbPackage.setItems(options);
-        pnlMain.setStyle("-fx-border-color: black");
+        validator = new RequiredFieldValidator();
+        validator.setMessage("Input Required");
+        getPhoneNumber().getValidators().add(validator);
+        
+        validator = new RequiredFieldValidator();
+        validator.setMessage("Input Required");
+        getAddress().getValidators().add(validator);
+        
+        
+        
         generatePriceHandler();
                 
     }
@@ -102,17 +103,15 @@ public class FXMLController implements Initializable {
         generatePrice().setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                if(!getName().validate()){
-                    return;
-                    
+                try{
+                if(!getName().validate() || !getPhoneNumber().validate() || !getAddress().validate()){
+                    return;                   
                 }
                 Alert.show("Welcome");
-                
-            }
-            
-        });
-       
-    }
-    
-        
+                }catch(Exception ex ){
+                    ex.printStackTrace();
+                }
+            }           
+        });       
+    }        
 }
