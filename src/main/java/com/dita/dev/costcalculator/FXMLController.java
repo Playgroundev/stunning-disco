@@ -31,14 +31,8 @@ public class FXMLController implements Initializable {
         label.setText("Hello World!");
     }
     
-    @FXML 
-    private JFXTextField txtName;
-    @FXML
-    private TextField txtAccountNo;
-    
-  /*  @FXML 
-    private ProgressIndicator progress;
-    */
+    @FXML private JFXTextField txtName;
+    @FXML private TextField txtAccountNo;
     @FXML private JFXTextField txtPhone;
     @FXML private JFXTextField txtAddress;
     @FXML private JFXButton btnCalculate;
@@ -53,6 +47,7 @@ public class FXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+        try{
         RequiredFieldValidator validator = new RequiredFieldValidator();
         //validator.setIcon(MaterialIcon.WARNING);
         validator.setMessage("Input Required");
@@ -70,6 +65,19 @@ public class FXMLController implements Initializable {
         
         ObservableList<String> options = FXCollections.observableArrayList(utilities.getCarModels());
         getModel().setItems(options);
+        
+        ObservableList<String> packages = FXCollections.observableArrayList("Package A","Package B");
+        getPackage().setItems(packages);
+        
+        ObservableList<String> paintJob = FXCollections.observableArrayList("Metallic","Normal");
+        getPaintDetail().setItems(paintJob);
+        
+        ObservableList<String> paymentMethod = FXCollections.observableArrayList("Financing","Cash","Trade In");
+        getPaymentDetails().setItems(paymentMethod);
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
         
     }
     

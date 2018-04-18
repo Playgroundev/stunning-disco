@@ -1,5 +1,6 @@
 
 import com.dita.dev.costcalculator.Controller.Utilities;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /*
@@ -18,7 +19,10 @@ public class ControllerTests {
     public void testCaseResults(){
         Utilities instance = new Utilities();
         System.out.println("Testing Cases");
-        System.out.println(instance.getCarModels());
+        String expectedResult = "S60";
+        String result = instance.getCarModels().get(0);
+        assertEquals(expectedResult,result);
+        
     }
         
     
