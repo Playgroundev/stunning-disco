@@ -2,6 +2,7 @@ package com.dita.dev.costcalculator;
 
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -39,6 +40,11 @@ public class FXMLController implements Initializable {
     private JFXButton btnCalculate;
     @FXML
     private Button Exit;
+    @FXML
+    private JFXComboBox cmbModel;
+    @FXML
+    private JFXComboBox cmbPackage;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String account_number = "123644";

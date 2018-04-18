@@ -18,7 +18,6 @@ public class MainApp extends Application {
         scene.getStylesheets().add("/styles/Styles.css");
        // setUserAgentStylesheet(STYLESHEET_CASPIAN);
         setUserAgentStylesheet(STYLESHEET_CASPIAN);
-
         stage.setTitle("Car Cost Calculator");
         stage.setResizable(false);
         stage.setScene(scene);
