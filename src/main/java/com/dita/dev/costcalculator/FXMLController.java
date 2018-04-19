@@ -47,13 +47,17 @@ public class FXMLController implements Initializable {
     @FXML private JFXComboBox cmbPaint;
     @FXML private JFXComboBox cmbPayment;
     @FXML private JFXButton btnPrice;
+    @FXML private Label lblProcessing;
+   
     @FXML private ProgressIndicator prgIndicator;
+    private int counter= 0;
     Task worker;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         try{
+            showProcess().setVisible(false);
         RequiredFieldValidator validator = new RequiredFieldValidator();
         //validator.setIcon(MaterialIcon.WARNING);
         validator.setMessage("Input Required");
@@ -147,6 +151,8 @@ public class FXMLController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try{
+                    lblProcessing.setVisible(true);
+                    showProcess().setVisible(true);
                     showProcess().setProgress(0);
                     worker = utilities.createWorker();
                     showProcess().progressProperty().unbind();
@@ -155,17 +161,18 @@ public class FXMLController implements Initializable {
                         @Override
                         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                             System.out.println(newValue);
-                        }
-                        
+                           // worker = utilities.createWorker();
+                            lblProcessing.setVisible(false);
+                         
+                             
+                        }                      
                     });
                 }catch(Exception ex){
                     ex.printStackTrace();
-                }
-                
-                new Thread(worker).start();
-            }
-            
-            
+                }               
+                new Thread(worker).start();              
+                counter =1;
+            }           
         });
     } 
  }

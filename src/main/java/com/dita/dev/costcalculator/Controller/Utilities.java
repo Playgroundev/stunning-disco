@@ -60,8 +60,8 @@ public class Utilities {
             @Override
             protected Object call() throws Exception {
                 for(int i = 0;i<10;i++){
-                    Thread.sleep(2000);
-                    updateMessage("2000 Milliseconds");
+                    Thread.sleep(500);
+                    updateMessage("500 Milliseconds");
                     updateProgress(i+1,10);
                 }
                return true; //To change body of generated methods, choose Tools | Templates.
