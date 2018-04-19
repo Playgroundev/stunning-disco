@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Properties;
+import javafx.concurrent.Task;
 
 /**
  *
@@ -52,5 +53,21 @@ public class Utilities {
             ex.printStackTrace();
         }
         return builder.toString();
+    }
+    
+    public Task createWorker(){
+        return new Task(){
+            @Override
+            protected Object call() throws Exception {
+                for(int i = 0;i<10;i++){
+                    Thread.sleep(2000);
+                    updateMessage("2000 Milliseconds");
+                    updateProgress(i+1,10);
+                }
+               return true; //To change body of generated methods, choose Tools | Templates.
+            }
+            
+        };
+        
     }
 }

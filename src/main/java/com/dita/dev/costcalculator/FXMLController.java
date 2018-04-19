@@ -18,6 +18,10 @@ import javafx.scene.layout.Pane;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import com.dita.dev.costcalculator.Controller.Utilities;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
+import javafx.scene.control.ProgressIndicator;
 
 public class FXMLController implements Initializable {
     
@@ -43,6 +47,8 @@ public class FXMLController implements Initializable {
     @FXML private JFXComboBox cmbPaint;
     @FXML private JFXComboBox cmbPayment;
     @FXML private JFXButton btnPrice;
+    @FXML private ProgressIndicator prgIndicator;
+    Task worker;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -62,6 +68,7 @@ public class FXMLController implements Initializable {
         getAddress().getValidators().add(validator);
         
         generatePriceHandler();
+        progressHandler();
         
         ObservableList<String> options = FXCollections.observableArrayList(utilities.getCarModels());
         getModel().setItems(options);
@@ -112,6 +119,12 @@ public class FXMLController implements Initializable {
     public JFXButton generatePrice(){
         return btnPrice;
     }
+    public ProgressIndicator showProcess(){
+        return  prgIndicator;
+    }
+    public JFXButton getPrinter(){
+        return btnCalculate;
+    }
     
     public void generatePriceHandler(){
         generatePrice().setOnAction(new EventHandler<ActionEvent>(){
@@ -127,5 +140,32 @@ public class FXMLController implements Initializable {
                 }
             }           
         });       
-    }        
-}
+    }
+    
+    public void progressHandler(){
+        getPrinter().setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                    showProcess().setProgress(0);
+                    worker = utilities.createWorker();
+                    showProcess().progressProperty().unbind();
+                    showProcess().progressProperty().bind(worker.progressProperty());
+                    worker.messageProperty().addListener(new ChangeListener<String>(){
+                        @Override
+                        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                            System.out.println(newValue);
+                        }
+                        
+                    });
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
+                
+                new Thread(worker).start();
+            }
+            
+            
+        });
+    } 
+ }

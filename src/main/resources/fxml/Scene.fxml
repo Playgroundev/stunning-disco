@@ -6,6 +6,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,6 +26,9 @@
          <effect>
             <Glow level="1.0" />
          </effect>
+         <children>
+            <ProgressIndicator fx:id="prgIndicator" layoutX="172.0" layoutY="139.0" prefHeight="72.0" prefWidth="75.0" progress="0.0" />
+         </children>
       </Pane>
       <JFXComboBox fx:id="cmbModel" layoutX="23.0" layoutY="221.0" prefHeight="23.0" prefWidth="289.0" promptText="Select Model" />
       <JFXComboBox fx:id="cmbPackage" layoutX="21.0" layoutY="269.0" prefHeight="23.0" prefWidth="289.0" promptText="Select Package" />
